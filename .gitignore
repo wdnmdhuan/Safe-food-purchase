@@ -3,7 +3,11 @@
 test.py
 *.jpg
 *.png
-\data
+stopword.txt
+word2vec.vector
+\crawler
+\images
+\corpus
 \newtest
 \词向量增量训练
 \BiLSTM分类

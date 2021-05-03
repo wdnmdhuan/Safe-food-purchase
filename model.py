@@ -8,7 +8,6 @@ import re
 import jieba
 from gensim.models.word2vec import LineSentence
 from gensim.models.word2vec import Word2Vec
-
 import config
 
 
@@ -33,7 +32,8 @@ class TrainWord2Vec:
         """
         self.corpus = corpus
         self.corpus_cut = corpus_cut
-        self.stopword = stopword
+        self.stopword = [word.strip('\n') for word in open(stopword, encoding='utf-8')]
+        print(self.stopword)
         self.num_features = num_features
         self.min_word_count = min_word_count
         self.context = context
@@ -52,14 +52,16 @@ class TrainWord2Vec:
         for i, line in enumerate(fileTrainRead):
             pattern = re.compile(r'[\sA-Za-z～()（）【】%*#+\-.\\/:=：_,，。、;；“”"\'’‘？?！!<《》>^&{}|…]')
             line = re.sub(pattern, '', line)
-            fileTrainSeg.append([' '.join(jieba.lcut(line, cut_all=False))])
+            cut_list = jieba.lcut(line, cut_all=False)
+            cut_word = [word for word in cut_list if word not in self.stopword]
+            fileTrainSeg.append(' '.join(cut_word))
             if i % 100 == 0:
                 print(i)
 
         # 保存分词结果到文件中
         with open(self.corpus_cut, 'w', encoding='utf-8') as fW:
-            for i in range(len(fileTrainSeg)):
-                fW.write(fileTrainSeg[i][0])
+            for line in fileTrainSeg:
+                fW.write(line)
                 fW.write('\n')
         return self.corpus_cut
 
@@ -96,14 +98,14 @@ class TrainWord2Vec:
         else:
             model = self.get_model(text)
         # 保存模型
-        model.save("word2vec.model")
+        model.save(config.model)
 
 
 if __name__ == '__main__':
-    trainmodel = TrainWord2Vec()
-    trainmodel.main()
-    # model = Word2Vec.load("word2vec.model")
+    # trainmodel = TrainWord2Vec()
+    # trainmodel.main()
+    model = Word2Vec.load(config.model)
     # model.wv.save_word2vec_format('word2vec.vector')
     # print(model.wv.similar_by_word("猪肉"))
-    # print(model.similarity('牛肉丸', '花生油'))
-    # print(model.most_similar('樱桃'))
+    print(model.similarity('苹果', '香蕉'))
+    print(model.most_similar('奶'))
