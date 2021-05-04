@@ -1,7 +1,10 @@
 import datetime
 import os
 
-father_path = os.path.abspath(os.path.dirname(__file__))
+# 获取当前文件路径
+current_path = os.path.abspath(__file__)
+# 获取当前文件的父目录
+father_path = os.path.abspath(os.path.dirname(current_path) + os.path.sep + ".")
 base_dir = os.path.join(father_path, 'data')
 
 token = os.path.join(base_dir, 'token.json')
@@ -10,12 +13,12 @@ Cimage = os.path.join(image_dir, 'Cimage')
 Oimage = os.path.join(image_dir, 'Oimage')
 # Timage = os.path.join(image_dir, 'Timage')
 
-# corpus_dir = os.path.join(base_dir, 'corpus')
-# stopword = os.path.join(base_dir, 'stopword.txt')
-# label = os.path.join(corpus_dir, 'labels.txt')
-# foodsec = os.path.join(corpus_dir, 'foodsec.csv')
-# corpus = os.path.join(corpus_dir, 'corpus.txt')
-# corpus_cut = os.path.join(corpus_dir, 'corpus_cut.txt')
+corpus_dir = os.path.join(base_dir, 'corpus')
+stopword = os.path.join(base_dir, 'stopword.txt')
+label = os.path.join(corpus_dir, 'labels.txt')
+foodsec = os.path.join(corpus_dir, 'foodsec.csv')
+corpus = os.path.join(corpus_dir, 'corpus.txt')
+corpus_cut = os.path.join(corpus_dir, 'corpus_cut.txt')
 uq_rate = os.path.join(base_dir, 'uq_rate.csv')
 
 model = os.path.join(base_dir, 'model', 'word2vec.model')

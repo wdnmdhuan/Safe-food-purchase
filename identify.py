@@ -131,7 +131,7 @@ def categorize(result):
         idx.append(max_index)
     mx_score = max(scores)
     # print(mx_score)
-    if mx_score < 0.85:
+    if mx_score < 0.9:
         return None, None
     mx_id = scores.index(mx_score)
 
@@ -155,7 +155,3 @@ def show(raw_result, category):
         print(f'抽检不合格数：{int(df["unqualified_num"])}')
         print(f'抽检总数：{int(df["check_num"])}')
         print(f'抽检不合格率：{df["uq_rate"]}')
-
-
-if __name__ == '__main__':
-    show(*categorize('梨'))
