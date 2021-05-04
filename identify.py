@@ -24,7 +24,7 @@ class Identify:
         self.filepath = filepath
         with open(filepath, 'rb') as f:
             self.img = base64.b64encode(f.read())
-        with open("data/token.json") as f:
+        with open(config.token) as f:
             self.tokens = json.load(f)
 
     def __call__(self):

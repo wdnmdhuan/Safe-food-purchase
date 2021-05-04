@@ -1,6 +1,7 @@
 .idea
 \__pycache__
 test.py
+model.py
 *.jpg
 *.png
 stopword.txt
@@ -8,7 +9,4 @@ word2vec.vector
 \crawler
 \images
 \corpus
-\newtest
-\词向量增量训练
-\BiLSTM分类
 \test_pkg

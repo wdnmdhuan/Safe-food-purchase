@@ -3,18 +3,19 @@ import os
 
 base_dir = 'data'
 
+token = os.path.join(base_dir, 'token.json')
 image_dir = os.path.join(base_dir, 'images')
 Cimage = os.path.join(image_dir, 'Cimage')
 Oimage = os.path.join(image_dir, 'Oimage')
-Timage = os.path.join(image_dir, 'Timage')
+# Timage = os.path.join(image_dir, 'Timage')
 
-corpus_dir = os.path.join(base_dir, 'corpus')
-stopword = os.path.join(base_dir, 'stopword.txt')
-label = os.path.join(corpus_dir, 'labels.txt')
-foodsec = os.path.join(corpus_dir, 'foodsec.csv')
-corpus = os.path.join(corpus_dir, 'corpus.txt')
-corpus_cut = os.path.join(corpus_dir, 'corpus_cut.txt')
-uq_rate = os.path.join(corpus_dir, 'uq_rate.csv')
+# corpus_dir = os.path.join(base_dir, 'corpus')
+# stopword = os.path.join(base_dir, 'stopword.txt')
+# label = os.path.join(corpus_dir, 'labels.txt')
+# foodsec = os.path.join(corpus_dir, 'foodsec.csv')
+# corpus = os.path.join(corpus_dir, 'corpus.txt')
+# corpus_cut = os.path.join(corpus_dir, 'corpus_cut.txt')
+uq_rate = os.path.join(base_dir, 'uq_rate.csv')
 
 model = os.path.join(base_dir, 'model', 'word2vec.model')
 
@@ -29,7 +30,7 @@ zero_tomorrow = now - datetime.timedelta(days=-1,
 # timer的启动时间
 start = {
     "delete_expired_images": zero_tomorrow,
-    "get_token": zero_tomorrow,
+    "get_token": now,
     "seeImage": now,
     "test": now,
 }
