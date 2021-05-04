@@ -4,6 +4,8 @@ import datetime
 import requests
 from decorators import timer
 
+import config
+
 
 # 定时删除过期图片
 @timer
@@ -32,7 +34,7 @@ def delete_expired_images(pathname: str, day_difference: int):
 # 定时获取新的token
 @timer
 def get_token():
-    with open("data/token.json") as f:
+    with open(config.token) as f:
         applications = json.load(f)
 
     for key, application in applications.items():
@@ -44,5 +46,5 @@ def get_token():
         if response:
             application["token"] = response.json()["access_token"]
             applications[key] = application
-    with open("data/token.json", 'w') as f:
+    with open(config.token, 'w') as f:
         json.dump(applications, f)

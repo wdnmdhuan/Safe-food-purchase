@@ -6,7 +6,10 @@ model.py
 *.png
 stopword.txt
 word2vec.vector
+main.spec
 \crawler
 \images
 \corpus
 \test_pkg
+\dist
+\build

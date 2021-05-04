@@ -1,7 +1,8 @@
 import datetime
 import os
 
-base_dir = 'data'
+father_path = os.path.abspath(os.path.dirname(__file__))
+base_dir = os.path.join(father_path, 'data')
 
 token = os.path.join(base_dir, 'token.json')
 image_dir = os.path.join(base_dir, 'images')
